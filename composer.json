@@ -1,0 +1,25 @@
+{
+    "name": "cloudways/premium-updates",
+    "description": "WP-CLI package to improve update integration with premium plugins & themes",
+    "type": "wp-cli-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alain Schlesser",
+            "email": "alain.schlesser@gmail.com"
+        }
+    ],
+    "require": {
+        "wp-cli/wp-cli": "^2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cloudways\\PremiumUpdates\\": "src/"
+        },
+        "files": [
+            "premium-updates.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
