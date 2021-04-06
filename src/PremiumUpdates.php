@@ -30,14 +30,15 @@ final class PremiumUpdates {
      */
     public function register()
     {
+        WP_CLI::debug( 'Registering Cloudways premium updates package...', self::DEBUG_GROUP);
+
         if ( $this->is_command_to_intercept() ) {
+
             $this->fake_admin_request();
 
             WP_CLI::add_wp_hook( 'pre_set_site_transient_update_plugins', [ $this, 'pre_set_site_transient_update_plugins' ] );
-
-            WP_CLI::debug( 'Cloudways premium updates package registered', self::DEBUG_GROUP);
         } else {
-            WP_CLI::debug( 'Cloudways premium updates package registration skipped', self::DEBUG_GROUP);
+            WP_CLI::debug( 'Skipping registration of Cloudways premium updates package for this command', self::DEBUG_GROUP);
         }
     }
 
