@@ -30,6 +30,8 @@ final class PremiumUpdates {
             'About to set site transient "update_plugins" - ' . $this->dump_update_plugins_transient( $transient ),
             self::DEBUG_GROUP
         );
+
+        return $transient;
     }
 
     /**
