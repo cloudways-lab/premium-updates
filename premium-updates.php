@@ -2,8 +2,6 @@
 
 namespace Cloudways\PremiumUpdates;
 
-use WP_CLI;
-
 if ( ! class_exists( 'WP_CLI' ) ) {
     return;
 }
@@ -20,8 +18,4 @@ if ( ! class_exists( PremiumUpdates::class ) ) {
     return;
 }
 
-$premium_updates = new PremiumUpdates();
-
-WP_CLI::debug( 'Cloudways premium updates package instantiated', PremiumUpdates::DEBUG_GROUP);
-
-WP_CLI::add_wp_hook( 'init', [ $premium_updates, 'register' ] );
+( new PremiumUpdates() )->register();
