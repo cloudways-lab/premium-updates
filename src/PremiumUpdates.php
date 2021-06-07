@@ -113,7 +113,7 @@ final class PremiumUpdates {
         $_SERVER['PHP_SELF'] = '/wp-admin/wp-cli-fake-admin-file.php';
 
         // Bootstrap the WordPress administration area.
-        WP_CLI::add_wp_hook( 'init', function () {
+        WP_CLI::add_wp_hook( 'admin_init', function () {
             global $wp_db_version, $_wp_submenu_nopriv;
 
             // Make sure we don't trigger a DB upgrade as that tries to redirect the page.

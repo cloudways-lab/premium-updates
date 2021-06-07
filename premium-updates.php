@@ -2,7 +2,9 @@
 
 namespace Cloudways\PremiumUpdates;
 
-if ( ! class_exists( 'WP_CLI' ) ) {
+use WP_CLI;
+
+if ( ! defined( 'WP_CLI' ) || ! WP_CLI || ! class_exists( 'WP_CLI' ) ) {
     return;
 }
 
@@ -18,4 +20,6 @@ if ( ! class_exists( PremiumUpdates::class ) ) {
     return;
 }
 
-( new PremiumUpdates() )->register();
+WP_CLI::add_hook( 'before_wp_load', static function () {
+    ( new PremiumUpdates() )->register();
+} );
