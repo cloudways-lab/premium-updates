@@ -26,10 +26,8 @@ final class PremiumUpdates {
      * @var array<array>
      */
     const COMMANDS_TO_INTERCEPT = [
-        [ 'plugin', 'list'   ],
-        [ 'plugin', 'update' ],
-        [ 'theme',  'list'   ],
-        [ 'theme',  'update' ],
+        [ 'plugin' ],
+        [ 'theme' ],
     ];
 
     /**
@@ -149,9 +147,11 @@ final class PremiumUpdates {
     {
         $command = WP_CLI::get_runner()->arguments;
 
-        if ( in_array( $command, self::COMMANDS_TO_INTERCEPT ) ) {
-            WP_CLI::debug( 'Detected a command to be intercepted: ' . implode( ' ', $command ), self::DEBUG_GROUP );
-            return true;
+        foreach ( self::COMMANDS_TO_INTERCEPT as $command_to_intercept ) {
+            if ( array_slice( $command, 0, count( $command_to_intercept ) ) === $command_to_intercept ) {
+                WP_CLI::debug( 'Detected a command to be intercepted: ' . implode( ' ', $command ), self::DEBUG_GROUP );
+                return true;
+            }
         }
 
         return false;
