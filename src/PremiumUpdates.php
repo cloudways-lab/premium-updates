@@ -6,6 +6,11 @@ use stdClass;
 use WP_CLI;
 use WP_Session_Tokens;
 
+/**
+ * Hooks into WP-CLI to fake an admin backend context for a predefined list of commands.
+ *
+ * @package Cloudways\PremiumUpdates
+ */
 final class PremiumUpdates {
 
     /**
@@ -21,8 +26,10 @@ final class PremiumUpdates {
      * @var array<array>
      */
     const COMMANDS_TO_INTERCEPT = [
-        [ 'plugin', 'list' ],
+        [ 'plugin', 'list'   ],
         [ 'plugin', 'update' ],
+        [ 'theme',  'list'   ],
+        [ 'theme',  'update' ],
     ];
 
     /**
