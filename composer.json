@@ -22,5 +22,30 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "wp-cli/wp-cli-tests": "^3.0",
+        "wp-cli/extension-command": "^2.1",
+        "wp-cli/entity-command": "^2.1",
+        "wp-cli/scaffold-command": "^2.0",
+        "wp-cli/package-command": "^2.1"
+    },
+    "scripts": {
+        "behat": "run-behat-tests",
+        "behat-rerun": "rerun-behat-tests",
+        "lint": "run-linter-tests",
+        "phpcs": "run-phpcs-tests",
+        "phpunit": "run-php-unit-tests",
+        "prepare-tests": "install-package-tests",
+        "test": [
+            "@lint",
+            "@phpcs",
+            "@phpunit",
+            "@behat"
+        ]
+    },
+    "support": {
+        "issues": "https://github.com/cloudways-lab/premium-updates/issues",
+        "source": "https://github.com/cloudways-lab/premium-updates"
+    }
 }
